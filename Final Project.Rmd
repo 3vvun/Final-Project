@@ -1,0 +1,61 @@
+---
+title: "Final Project"
+author: "Evan Carlson 921268219"
+date: "2024-12-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+all_data = read.csv("C:/Users/evuns/Downloads/2010-2024 All Data.csv") 
+adv_all_data = read.csv("C:/Users/evuns/Downloads/Adv Stats 2010-2024.csv")
+no_runners = read.csv("C:/Users/evuns/Downloads/No Runners.csv")
+first = read.csv("C:/Users/evuns/Downloads/Runner on First.csv")
+second = read.csv("C:/Users/evuns/Downloads/Runner On Second.csv")
+third = read.csv("C:/Users/evuns/Downloads/Runner On Third.csv")
+first_second = read.csv("C:/Users/evuns/Downloads/Runner On First and Second.csv")
+first_third = read.csv("C:/Users/evuns/Downloads/Runner On First and Third.csv")
+second_third = read.csv("C:/Users/evuns/Downloads/Runner On Second and Third.csv")
+bases_loaded = read.csv("C:/Users/evuns/Downloads/Bases Loaded.csv")
+```
+
+```{r}
+baseball_data = c(no_runners, first, second, third, first_second, first_third, second_third, bases_loaded)
+
+first
+```
+
+```{r}
+library(dplyr)
+
+first = first|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+second = second|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+third = third|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+first_second = first_second|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+first_third = first_third|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+second_third = second_third|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+bases_loaded = bases_loaded|>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+no_runners = no_runners |>
+  select(pa, hits, triples, singles, doubles, hrs, bb, bip)
+```
+
+```{r}
+no_runners = no_runners|>
+  mutate(sisler_stat = (2 * singles) + (3*doubles) + (4*triples) + (6*hrs) +
+           2*bb)
+
+
+
+
+
